@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Redes de Dos Puertos | Simulador de Circuitos</title>
+    <meta name="description" content="Teoría de redes de dos puertos: parámetros Z, Y e híbridos, con simulador interactivo del parámetro Z.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+    <!-- HOJA DE ESTILOS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header>
+
+    <h1>Redes de Dos Puertos</h1>
+
+    <nav>
+
+        <a href="index.html">Inicio</a>
+        <a href="cd.html">Corriente Directa</a>
+        <a href="ca.html">Corriente Alterna</a>
+        <a href="dospuertos.html">Dos Puertos</a>
+        <a href="recursos.html">Recursos</a>
+
+        <!-- MENU -->
+        <div class="dropdown">
+
+            <button class="dropbtn">
+                Prácticas
+            </button>
+
+            <div class="dropdown-content">
+
+                <a href="practicas.html">
+                    Simulaciones
+                </a>
+
+                <a href="bnc-caiman.html">
+                    Cable BNC-Caimán
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<main class="container" id="contenido">
+
+<section class="intro animado">
+
+    <!-- ========================================= -->
+    <!-- INTRODUCCION -->
+    <!-- ========================================= -->
+
+    <h2 class="section-title">
+        Introducción General
+    </h2>
+
+    <p>
+        En el análisis de circuitos eléctricos y electrónicos
+        se utilizan modelos matemáticos para simplificar
+        sistemas complejos formados por resistencias,
+        capacitores, inductores y amplificadores.
+    </p>
+
+    <p>
+        Uno de los modelos más importantes es el de
+        <strong>Redes de Dos Puertos</strong>,
+        que permite representar matemáticamente
+        las relaciones entre voltajes y corrientes.
+    </p>
+
+    <p>
+        Estas redes se utilizan para analizar el comportamiento
+        de dispositivos como amplificadores, filtros y sistemas
+        de comunicación, facilitando el diseño y la optimización
+        de estos sistemas.
+    </p>
+
+    <p>
+        Estas redes se componen de dos pares de terminales
+        (puertos) que permiten conectar diferentes circuitos
+        y analizar su comportamiento.
+    </p>
+
+    <p>
+        Estas redes son esenciales para el diseño y análisis
+        de sistemas de comunicación, amplificadores,
+        filtros y otros dispositivos electrónicos.
+    </p>
+
+    <p>
+        Las redes de dos puertos son fundamentales en
+        diversas áreas de la ingeniería eléctrica y
+        electrónica, incluyendo:
+    </p>
+
+    <ul>
+
+        <li>Electrónica analógica</li>
+        <li>Telecomunicaciones</li>
+        <li>Sistemas de potencia</li>
+        <li>Diseño de filtros</li>
+        <li>Amplificadores</li>
+
+    </ul>
+
+    <hr>
+
+    <!-- ========================================= -->
+    <!-- PUERTO -->
+    <!-- ========================================= -->
+
+    <h2 class="section-title">
+        ¿Qué es un Puerto?
+    </h2>
+
+    <p>
+        Un puerto es un conjunto de dos terminales
+        eléctricas por donde entra y sale corriente.
+    </p>
+
+    <p>
+        Los parámetros de red se utilizan para estudiar y 
+        modelar circuitos eléctricos, sistemas de líneas 
+        de transmisión y componentes electrónicos. El 
+        principio físico detrás de su cálculo se rige 
+        estrictamente por dos condiciones inducidas de 
+        manera controlada en los terminales:
+    </p>
+
+    <ul>
+
+        <li>Condición de cortocircuito: Se establece 
+            un cortocircuito en el puerto de salida 
+            (V2 = 0) para medir la corriente de entrada (I1) 
+            y determinar los parámetros relacionados con la impedancia de entrada.</li>
+        <li>Condición de circuito abierto: Se establece 
+            un circuito abierto en el puerto de salida 
+            (I2 = 0) para medir el voltaje de entrada (V1) 
+            y determinar los parámetros relacionados con la impedancia de salida.</li>
+    </ul>
+
+    <p>
+        Estas condiciones permiten obtener los parámetros de red 
+        (Z, Y, h) que describen el comportamiento del circuito 
+        bajo diferentes condiciones de operación.
+    </p>
+
+    <p>
+        En resumen, un puerto es un punto de conexión en un circuito 
+        que permite la entrada y salida de corriente, y es fundamental 
+        para el análisis y diseño de sistemas eléctricos y electrónicos.
+    </p>
+
+    <p>
+        En el contexto de las redes de dos puertos, cada puerto 
+        tiene dos terminales: una terminal de entrada y una terminal 
+        de salida. La corriente entra por la terminal de entrada y 
+        sale por la terminal de salida, lo que permite conectar 
+        diferentes circuitos y analizar su comportamiento.
+    </p>
+
+    <ul>
+
+        <li>La corriente entra por una terminal.</li>
+        <li>La corriente sale por la otra terminal.</li>
+        <li>Permite conectar diferentes circuitos.</li>
+
+    </ul>
+
+    <hr>
+
+    <!-- ========================================= -->
+    <!-- RED DOS PUERTOS -->
+    <!-- ========================================= -->
+
+    <h2 class="section-title">
+        Red de Dos Puertos
+    </h2>
+
+    <p>
+        Una red de dos puertos es un modelo matemático que describe
+        la relación entre los voltajes y corrientes en dos puertos
+        conectados a un circuito. Estos puertos se denominan comúnmente como
+        puerto de entrada (puerto 1) y puerto de salida (puerto 2).
+    </p>
+
+    <p>
+        En una red de dos puertos, se definen cuatro variables principales:
+    </p>
+
+    <table>
+
+        <tr>
+            <th>Variable</th>
+            <th>Descripción</th>
+        </tr>
+
+        <tr>
+            <td>V1</td>
+            <td>Voltaje de entrada</td>
+        </tr>
+
+        <tr>
+            <td>I1</td>
+            <td>Corriente de entrada</td>
+        </tr>
+
+        <tr>
+            <td>V2</td>
+            <td>Voltaje de salida</td>
+        </tr>
+
+        <tr>
+            <td>I2</td>
+            <td>Corriente de salida</td>
+        </tr>
+
+    </table>
+
+    <p>
+        Estas variables se utilizan para describir el comportamiento de la red
+        y se relacionan mediante diferentes parámetros, como los parámetros Z, Y
+        y hibridos, que se explicarán a continuación.
+    </p>
+
+    <p>
+        Las redes de dos puertos se utilizan para analizar y diseñar una amplia
+        variedad de sistemas eléctricos y electrónicos, incluyendo amplificadores,
+        filtros, líneas de transmisión y sistemas de comunicación.
+    </p>
+
+    <p>
+        Estas redes permiten modelar el comportamiento de dispositivos y sistemas
+        complejos de manera más sencilla, facilitando el análisis y diseño de
+        estos sistemas.
+    </p>
+
+    <!-- CANVAS -->
+    <canvas id="dosPuertosCanvas" width="500" height="250"></canvas>
+
+    <hr>
+
+    <!-- ========================================= -->
+    <!-- PARAMETROS Z -->
+    <!-- ========================================= -->
+
+    <h2 class="section-title">
+        Parámetros Z
+    </h2>
+
+    <p>
+        Los parámetros Z son conocidos como
+        parámetros de impedancia. 
+    </p>
+
+    <p>
+        Estos parámetros se definen mediante las siguientes ecuaciones:
+    </p>
+
+    <div class="formula">
+        V1 = Z11·I1 + Z12·I2
+    </div>
+
+    <div class="formula">
+        V2 = Z21·I1 + Z22·I2
+    </div>
+
+    <p>
+        Donde:
+    </p>
+
+    <ul>
+
+        <li>
+            <span class="highlight">
+                Z11
+            </span>
+
+            → Impedancia de entrada
+        </li>
+
+        <li>
+            <span class="highlight">
+                Z22
+            </span>
+
+            → Impedancia de salida
+        </li>
+
+        <li>
+            <span class="highlight">
+                Z12
+            </span>
+
+            → Transferencia inversa
+        </li>
+
+        <li>
+            <span class="highlight">
+                Z21
+            </span>
+
+            → Transferencia directa
+        </li>
+
+    </ul>
+
+    <p>
+        Estos parámetros se utilizan para analizar el comportamiento de la red
+        bajo diferentes condiciones de operación, como cortocircuito y circuito abierto.
+    </p>
+
+    <p>
+        En resumen, los parámetros Z describen la relación entre los voltajes y corrientes
+        en una red de dos puertos, y son fundamentales para el análisis y diseño de sistemas
+        eléctricos y electrónicos.
+    </p>
+
+    <hr>
+
+    <!-- ========================================= -->
+    <!-- PARAMETROS Y -->
+    <!-- ========================================= -->
+
+    <h2 class="section-title">
+        Parámetros Y
+    </h2>
+
+    <p>
+        Los parámetros Y son conocidos como
+        parámetros de admitancia. 
+    </p>
+
+    <p>
+        Estos parámetros se definen mediante las siguientes ecuaciones:
+    </p>
+
+    <div class="formula">
+        I1 = Y11·V1 + Y12·V2
+    </div>
+
+    <div class="formula">
+        I2 = Y21·V1 + Y22·V2
+    </div>
+
+    <div class="formula">
+        Y = 1 / Z
+    </div>
+
+    <p>
+        Donde:
+    </p>
+    
+    <ul>
+
+        <li>
+            <span class="highlight">
+                Y11
+            </span>
+
+            → Admitancia de entrada
+        </li>
+
+        <li>
+            <span class="highlight">
+                Y22
+            </span>
+
+            → Admitancia de salida
+        </li>
+
+        <li>
+            <span class="highlight">
+                Y12
+            </span>
+
+            → Transferencia inversa
+        </li>
+
+        <li>
+            <span class="highlight">
+                Y21
+            </span>
+
+            → Transferencia directa
+        </li>
+
+    </ul>
+
+    <p>
+        Estos parámetros se utilizan para analizar el comportamiento de la red
+        bajo diferentes condiciones de operación, como cortocircuito y circuito abierto.
+    </p>
+
+    <p>
+        En resumen, los parámetros Y describen la relación entre los voltajes y corrientes
+        en una red de dos puertos, y son fundamentales para el análisis y diseño de sistemas
+        eléctricos y electrónicos.
+    </p>
+
+    <hr>
+
+    <!-- ========================================= -->
+    <!-- PARAMETROS HIBRIDOS -->
+    <!-- ========================================= -->
+
+    <h2 class="section-title">
+        Parámetros Híbridos
+    </h2>
+
+    <p>
+        Los parámetros híbridos son conocidos como
+        parámetros hibridos. 
+    </p>
+    
+
+    <table>
+
+        <tr>
+            <th>Parámetro</th>
+            <th>Descripción</th>
+        </tr>
+
+        <tr>
+            <td>h11</td>
+            <td>Impedancia de entrada</td>
+        </tr>
+
+        <tr>
+            <td>h12</td>
+            <td>Ganancia inversa</td>
+        </tr>
+
+        <tr>
+            <td>h21</td>
+            <td>Ganancia directa</td>
+        </tr>
+
+        <tr>
+            <td>h22</td>
+            <td>Admitancia de salida</td>
+        </tr>
+
+    </table>
+
+    <p>
+        Estos parámetros se definen mediante las siguientes ecuaciones:
+    </p>
+
+    <div class="formula">
+        V1 = h11·I1 + h12·V2
+    </div>
+
+    <div class="formula">
+        I2 = h21·I1 + h22·V2
+    </div>
+
+    <p>
+        Donde:
+    </p>
+
+    <ul>
+
+        <li>
+            <span class="highlight">
+                h11
+            </span>
+
+            → Impedancia de entrada
+        </li>
+
+        <li>
+            <span class="highlight">
+                h22
+            </span>
+
+            → Admitancia de salida
+        </li>
+
+        <li>
+            <span class="highlight">
+                h12
+            </span>
+
+            → Ganancia inversa
+        </li>
+
+        <li>
+            <span class="highlight">
+                h21
+            </span>
+
+            → Ganancia directa
+        </li>
+
+    </ul>
+
+    <p>
+        Estos parámetros se utilizan para analizar el comportamiento de la red
+        bajo diferentes condiciones de operación, como cortocircuito y circuito abierto.
+    </p>
+
+    <p>
+        En resumen, los parámetros híbridos describen la relación entre los voltajes y corrientes
+        en una red de dos puertos, y son fundamentales para el análisis y diseño de sistemas
+        eléctricos y electrónicos.
+    </p>
+
+    <hr>
+
+    <!-- ========================================= -->
+    <!-- CORRIENTE ALTERNA -->
+    <!-- ========================================= -->
+
+    <h2 class="section-title">
+        Redes en Corriente Alterna
+    </h2>
+
+    <p>
+        En el análisis de redes de dos puertos en corriente alterna 
+        (CA), se utilizan parámetros complejos para describir el 
+        comportamiento de la red. Estos parámetros se denominan 
+        parámetros de impedancia y admitancia, y se representan 
+        como números complejos que incluyen tanto la resistencia como la reactancia del circuito.
+
+        En CA, las bobinas generan una reactancia inductiva (XL) 
+        que se calcula utilizando la fórmula XL = ωL, donde ω es 
+        la frecuencia angular y L es la inductancia. Además, se 
+        utilizan fasores para representar las magnitudes y fases 
+        de los voltajes y corrientes en el circuito.
+
+        En resumen, el análisis de redes de dos puertos en 
+        corriente alterna implica el uso de parámetros complejos, 
+        la consideración de la reactancia inductiva y el uso de fasores 
+        para describir el comportamiento del circuito.
+    </p>
+    
+    <p>
+        En el análisis de redes de dos puertos en corriente alterna 
+        (CA), se utilizan parámetros complejos para describir el 
+        comportamiento de la red. Estos parámetros se denominan 
+        parámetros de impedancia y admitancia, y se representan 
+        como números complejos que incluyen tanto la resistencia como la reactancia del circuito.
+    </p>
+
+    <p>
+        En CA, las bobinas generan una reactancia inductiva (XL) 
+        que se calcula utilizando la fórmula XL = ωL, donde ω es 
+        la frecuencia angular y L es la inductancia. Además, se 
+        utilizan fasores para representar las magnitudes y fases 
+        de los voltajes y corrientes en el circuito.
+    </p>
+
+    <p>
+        En resumen, el análisis de redes de dos puertos en 
+        corriente alterna implica el uso de parámetros complejos, 
+        la consideración de la reactancia inductiva y el uso de fasores 
+        para describir el comportamiento del circuito.
+    </p>
+
+    <div class="formula">
+        Z = R + jX
+    </div>
+
+    <div class="formula">
+        XL = ωL
+    </div>
+    
+    <div class="formula">
+        Y = G + jB
+    </div>
+    
+     <div class="formula">
+        G = 1 / R
+    </div>
+    
+     <div class="formula">
+        B = 1 / X
+    </div>
+
+
+    <ul>
+
+        <li>Se utilizan impedancias complejas.</li>
+        <li>Las bobinas generan reactancia inductiva.</li>
+        <li>Se utilizan fasores.</li>
+
+    </ul>
+
+    <p>
+        En resumen, el análisis de redes de dos puertos en 
+        corriente alterna implica el uso de parámetros complejos, 
+        la consideración de la reactancia inductiva y el uso de fasores 
+        para describir el comportamiento del circuito.
+    </p>
+
+    <hr>
+
+    <!-- ========================================= -->
+    <!-- SIMULADOR -->
+    <!-- ========================================= -->
+
+    <h2 class="section-title">
+        Simulador Básico de Parámetro Z
+    </h2>
+
+    <label for="z11">Z11:</label>
+    <input type="number" id="z11">
+
+    <label for="z12">Z12:</label>
+    <input type="number" id="z12">
+
+    <label for="i1">I1:</label>
+    <input type="number" id="i1">
+
+    <label for="i2">I2:</label>
+    <input type="number" id="i2">
+
+    <button onclick="calcularZ()">
+
+        Calcular Voltaje
+
+    </button>
+
+    <div class="resultado-box" id="resultadoZ">
+
+        Resultado aparecerá aquí
+
+    </div>
+
+    <hr>
+
+</section>
+
+</main>
+
+<footer>
+
+    <p class="footer-marca">Simulador de Circuitos</p>
+    <p>Herramienta educativa de electrónica y circuitos eléctricos.</p>
+
+</footer>
+
+<!-- ========================================= -->
+<!-- CONEXION JAVASCRIPT -->
+<!-- ========================================= -->
+
+<script src="js/nav.js"></script>
+<script src="js/dospuertos.js"></script>
+
+</body>
+
+</html>

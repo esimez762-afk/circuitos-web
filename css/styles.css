@@ -1,0 +1,828 @@
+/* =========================================
+   FUENTE
+========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
+
+/* =========================================
+   VARIABLES
+========================================= */
+:root{
+    --azul:#2563eb;
+    --azul-oscuro:#1d4ed8;
+    --azul-claro:#eff6ff;
+    --azul-claro2:#dbeafe;
+    --cian:#38bdf8;
+    --gris-950:#0f172a;
+    --gris-900:#111827;
+    --gris-800:#1f2937;
+    --gris-600:#4b5563;
+    --gris-300:#cbd5e1;
+    --gris-200:#e5e7eb;
+    --gris-100:#f1f5f9;
+    --fondo:#f4f6f9;
+    --texto:#333;
+    --blanco:#fff;
+    --radio-sm:8px;
+    --radio-md:12px;
+    --radio-lg:18px;
+    --sombra-sm:0 4px 12px rgba(15,23,42,0.08);
+    --sombra-md:0 5px 20px rgba(15,23,42,0.08);
+    --sombra-lg:0 10px 25px rgba(15,23,42,0.18);
+    --transicion:0.25s ease;
+}
+
+/* =========================================
+   RESET
+========================================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =========================================
+   ACCESIBILIDAD: SALTAR AL CONTENIDO
+========================================= */
+.skip-link{
+    position:absolute;
+    left:-999px;
+    top:auto;
+    background:var(--azul);
+    color:#fff;
+    padding:10px 16px;
+    border-radius:0 0 8px 0;
+    z-index:2000;
+}
+
+.skip-link:focus{
+    left:0;
+    top:0;
+}
+
+/* =========================================
+   FOCO VISIBLE (accesibilidad de teclado)
+========================================= */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible{
+    outline:3px solid var(--cian);
+    outline-offset:2px;
+}
+
+/* =========================================
+   BODY
+========================================= */
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter','Segoe UI',Arial,sans-serif;
+    background:var(--fondo);
+    color:var(--texto);
+    line-height:1.7;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+main{
+    flex:1;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+header{
+    background:linear-gradient(135deg,var(--gris-800),var(--gris-950));
+    color:#fff;
+    padding:22px 20px;
+    text-align:center;
+    box-shadow:0 4px 15px rgba(0,0,0,0.25);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+header h1{
+    font-size:2rem;
+    font-weight:800;
+    margin-bottom:14px;
+    letter-spacing:0.3px;
+}
+
+header h1::before{
+    content:'⚡ ';
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+nav{
+    margin-top:6px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+nav a,
+.dropbtn{
+    color:#e5e7eb;
+    text-decoration:none;
+    font-weight:500;
+    background:rgba(255,255,255,0.08);
+    padding:10px 16px;
+    border-radius:10px;
+    transition:background var(--transicion), color var(--transicion), transform var(--transicion);
+    border:none;
+    cursor:pointer;
+    font-size:14px;
+    font-family:inherit;
+}
+
+nav a:hover,
+.dropbtn:hover{
+    background:var(--azul);
+    color:white;
+    transform:translateY(-2px);
+}
+
+/* Enlace de la página actual */
+nav a.activo{
+    background:var(--azul);
+    color:#fff;
+    box-shadow:0 0 0 2px rgba(56,189,248,0.5) inset;
+}
+
+/* =========================================
+   DROPDOWN (hover en escritorio + clic en táctil)
+========================================= */
+.dropdown{
+    position:relative;
+    display:inline-block;
+}
+
+.dropbtn::after{
+    content:'▾';
+    display:inline-block;
+    margin-left:6px;
+    transition:transform var(--transicion);
+}
+
+.dropdown.abierto .dropbtn::after{
+    transform:rotate(180deg);
+}
+
+.dropdown-content{
+    position:absolute;
+    top:100%;
+    left:50%;
+    transform:translate(-50%,10px);
+
+    min-width:220px;
+
+    background:#fff;
+    border-radius:12px;
+
+    box-shadow:var(--sombra-lg);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s;
+
+    z-index:1000;
+
+    overflow:hidden;
+}
+
+.dropdown-content a{
+    display:block;
+    padding:12px 16px;
+    color:#111827;
+    text-decoration:none;
+    transition:background var(--transicion);
+    font-size:14px;
+}
+
+.dropdown-content a:hover,
+.dropdown-content a:focus-visible{
+    background:var(--azul-claro2);
+}
+
+/* Escritorio: abre con hover */
+.dropdown:hover .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translate(-50%,0);
+}
+
+/* Táctil / teclado: abre con clase alternada por JS */
+.dropdown.abierto .dropdown-content{
+    opacity:1;
+    visibility:visible;
+    transform:translate(-50%,0);
+}
+
+/* =========================================
+   CONTAINER
+========================================= */
+.container{
+    max-width:1100px;
+    margin:40px auto;
+    padding:20px;
+}
+
+/* =========================================
+   TARJETAS / SECCIONES
+========================================= */
+.intro{
+    background:#fff;
+    padding:30px;
+    border-radius:var(--radio-lg);
+    box-shadow:var(--sombra-md);
+    margin-bottom:30px;
+    transition:transform var(--transicion), box-shadow var(--transicion);
+}
+
+.intro:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--sombra-lg);
+}
+
+/* =========================================
+   TITULOS
+========================================= */
+.intro h2{
+    margin-bottom:20px;
+    color:var(--gris-900);
+    border-left:5px solid var(--azul);
+    padding-left:12px;
+    font-size:1.7rem;
+    font-weight:700;
+}
+
+.intro h3{
+    margin:20px 0 10px;
+    color:var(--gris-800);
+    font-weight:600;
+}
+
+.intro p{
+    margin-bottom:15px;
+    text-align:justify;
+    color:var(--gris-600);
+}
+
+/* =========================================
+   TEXTO RESALTADO
+========================================= */
+strong{
+    color:var(--azul-oscuro);
+}
+
+/* =========================================
+   LISTAS
+========================================= */
+.intro ul{
+    padding:18px 20px 18px 40px;
+    margin-top:10px;
+    margin-bottom:20px;
+    background:var(--gris-100);
+    border-left:5px solid var(--azul);
+    border-radius:10px;
+}
+
+.intro li{
+    margin-bottom:10px;
+    line-height:1.7;
+    color:var(--gris-600);
+}
+
+/* =========================================
+   FORMULAS
+========================================= */
+.formula{
+    background:var(--gris-900);
+    color:var(--cian);
+    padding:15px;
+    border-radius:var(--radio-md);
+    text-align:center;
+    font-size:1.05rem;
+    margin:15px 0;
+    font-family:'JetBrains Mono',Consolas,monospace;
+    box-shadow:inset 0 0 10px rgba(56,189,248,0.2);
+}
+
+/* =========================================
+   ETIQUETAS DE FORMULARIO
+========================================= */
+label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    color:var(--gris-600);
+    margin-bottom:4px;
+}
+
+/* =========================================
+   INPUTS
+========================================= */
+input, select{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    margin-bottom:15px;
+    border-radius:10px;
+    border:1px solid var(--gris-300);
+    font-size:15px;
+    font-family:inherit;
+    transition:border-color var(--transicion), box-shadow var(--transicion);
+    background:#fff;
+    color:var(--texto);
+}
+
+input:focus, select:focus{
+    outline:none;
+    border-color:var(--azul);
+    box-shadow:0 0 8px rgba(37,99,235,0.3);
+}
+
+input[type="range"]{
+    padding:0;
+    cursor:pointer;
+    accent-color:var(--azul);
+}
+
+/* =========================================
+   FORMULARIOS
+========================================= */
+.form-ohm{
+    display:flex;
+    gap:10px;
+    margin-bottom:15px;
+    flex-wrap:wrap;
+    align-items:flex-start;
+}
+
+.form-ohm > div{
+    flex:1;
+    min-width:150px;
+}
+
+.form-ohm input{
+    margin-bottom:0;
+}
+
+/* =========================================
+   BOTONES
+========================================= */
+button{
+    background:linear-gradient(135deg,var(--azul),var(--azul-oscuro));
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:transform var(--transicion), box-shadow var(--transicion);
+    font-size:15px;
+    font-weight:600;
+    font-family:inherit;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 15px rgba(37,99,235,0.35);
+}
+
+button:active{
+    transform:translateY(0);
+}
+
+/* =========================================
+   RESULTADOS
+========================================= */
+.resultado-box{
+    margin-top:15px;
+    padding:15px;
+    background:var(--azul-claro);
+    border-radius:var(--radio-md);
+    border-left:5px solid var(--azul);
+    font-weight:bold;
+    color:var(--gris-800);
+}
+
+/* =========================================
+   DIAGRAMAS
+========================================= */
+.diagramas{
+    margin-top:40px;
+}
+
+.diagramas h3{
+    margin:25px 0 10px;
+}
+
+.grafica{
+    width:100%;
+    max-width:600px;
+    display:block;
+    margin:10px auto 30px;
+    background:#fafafa;
+    border-radius:10px;
+    padding:10px;
+    border:1px solid var(--gris-200);
+}
+
+/* =========================================
+   GRAFICAS (Chart.js)
+========================================= */
+.grafica-container{
+    width:100%;
+    max-width:700px;
+    height:350px;
+    margin:20px auto;
+}
+
+#grafica,
+#graficaCA,
+#graficaVI{
+    width:100% !important;
+    height:100% !important;
+}
+
+/* =========================================
+   CANVAS
+========================================= */
+canvas{
+    max-width:100%;
+    display:block;
+    margin:20px auto;
+    background:white;
+    border-radius:12px;
+    box-shadow:var(--sombra-sm);
+}
+
+#graficaVI{
+    max-width:800px;
+}
+
+/* =========================================
+   OSCILOSCOPIO
+========================================= */
+#osciloscopio,
+#osciloscopioCA{
+    max-width:800px;
+    width:100%;
+    height:auto;
+    margin:20px auto;
+    display:block;
+    background:black;
+    border:4px solid var(--gris-800);
+    border-radius:12px;
+}
+
+/* =========================================
+   CONTROLES
+========================================= */
+.controles{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin-top:15px;
+    margin-bottom:10px;
+}
+
+.controles label{
+    margin-bottom:0;
+    margin-top:8px;
+}
+
+/* =========================================
+   VIDEO RESPONSIVO
+========================================= */
+.video-container{
+    width:100%;
+    max-width:350px;
+    aspect-ratio:9 / 16;
+    margin:30px auto;
+    box-shadow:0 6px 20px rgba(0,0,0,0.25);
+    border-radius:12px;
+    overflow:hidden;
+    background:#000;
+}
+
+.video-container video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border:none;
+}
+
+/* =========================================
+   CARDS
+========================================= */
+.cards{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    flex:1;
+    min-width:220px;
+    transition:transform var(--transicion), box-shadow var(--transicion);
+    box-shadow:var(--sombra-sm);
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--sombra-md);
+}
+
+/* =========================================
+   ANIMACIONES
+========================================= */
+.animado{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all 0.6s ease;
+}
+
+.animado.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce){
+    html{
+        scroll-behavior:auto;
+    }
+    .animado{
+        opacity:1;
+        transform:none;
+        transition:none;
+    }
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+footer{
+    background:var(--gris-900);
+    color:#cbd5e1;
+    text-align:center;
+    padding:24px 20px;
+    margin-top:40px;
+    font-size:14px;
+}
+
+footer a{
+    color:var(--cian);
+    text-decoration:none;
+}
+
+footer a:hover{
+    text-decoration:underline;
+}
+
+footer .footer-marca{
+    color:#fff;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+/* =========================================
+   HR
+========================================= */
+hr{
+    margin:30px 0;
+    border:none;
+    border-top:2px solid var(--gris-200);
+}
+
+/* =========================================
+   TABLAS
+========================================= */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:25px 0;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:var(--sombra-sm);
+}
+
+table th{
+    background:var(--azul);
+    color:white;
+    padding:14px;
+    font-weight:600;
+    text-align:center;
+}
+
+table td{
+    padding:14px;
+    border-bottom:1px solid var(--gris-200);
+    text-align:center;
+    color:var(--gris-600);
+}
+
+table tr:last-child td{
+    border-bottom:none;
+}
+
+table tr:hover td{
+    background:var(--gris-100);
+}
+
+/* =========================================
+   TEXTO DESTACADO
+========================================= */
+.highlight{
+    color:var(--azul);
+    font-weight:bold;
+}
+
+/* =========================================
+   TITULOS DE SECCION
+========================================= */
+.section-title{
+    position:relative;
+    padding-bottom:8px;
+}
+
+.section-title::after{
+    content:'';
+    width:60px;
+    height:4px;
+    background:var(--azul);
+    position:absolute;
+    bottom:-8px;
+    left:0;
+    border-radius:10px;
+}
+
+/* =========================================
+   RECURSOS / ARCHIVOS DESCARGABLES
+========================================= */
+.archivos-buscador{
+    margin-bottom:20px;
+}
+
+.archivos-lista{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.archivo-item{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    background:var(--gris-100);
+    border:1px solid var(--gris-200);
+    border-radius:var(--radio-md);
+    padding:16px 18px;
+    transition:transform var(--transicion), box-shadow var(--transicion);
+}
+
+.archivo-item:hover{
+    transform:translateY(-2px);
+    box-shadow:var(--sombra-sm);
+}
+
+.archivo-icono{
+    font-size:1.8rem;
+    line-height:1;
+    flex-shrink:0;
+}
+
+.archivo-info{
+    flex:1;
+    min-width:0;
+}
+
+.archivo-info h3{
+    font-size:1rem;
+    color:var(--gris-900);
+    margin:0 0 4px;
+}
+
+.archivo-info p{
+    font-size:0.9rem;
+    color:var(--gris-600);
+    margin:0 0 6px;
+    text-align:left;
+}
+
+.archivo-categoria{
+    display:inline-block;
+    background:var(--azul-claro2);
+    color:var(--azul-oscuro);
+    font-size:0.75rem;
+    font-weight:600;
+    padding:3px 10px;
+    border-radius:999px;
+}
+
+.archivo-descarga{
+    background:linear-gradient(135deg,var(--azul),var(--azul-oscuro));
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.9rem;
+    padding:10px 18px;
+    border-radius:10px;
+    white-space:nowrap;
+    transition:transform var(--transicion), box-shadow var(--transicion);
+    flex-shrink:0;
+}
+
+.archivo-descarga:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 15px rgba(37,99,235,0.35);
+}
+
+.archivos-vacio{
+    text-align:center;
+    color:var(--gris-600);
+    padding:20px;
+}
+
+@media(max-width:768px){
+    .archivo-item{
+        flex-wrap:wrap;
+    }
+    .archivo-descarga{
+        width:100%;
+        text-align:center;
+    }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+@media(max-width:768px){
+
+    header h1{
+        font-size:1.5rem;
+    }
+
+    nav{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    nav a,
+    .dropdown{
+        width:100%;
+    }
+
+    .dropbtn{
+        width:100%;
+    }
+
+    .dropdown-content{
+        position:static;
+        transform:none;
+        min-width:100%;
+        margin-top:6px;
+        box-shadow:none;
+        border:1px solid var(--gris-200);
+    }
+
+    .dropdown:hover .dropdown-content{
+        transform:none;
+    }
+
+    .intro{
+        padding:20px;
+    }
+
+    .intro h2{
+        font-size:1.3rem;
+    }
+
+    .form-ohm{
+        flex-direction:column;
+    }
+
+    .grafica-container{
+        height:260px;
+    }
+
+    .cards{
+        flex-direction:column;
+    }
+}

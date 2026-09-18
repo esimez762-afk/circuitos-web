@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prácticas | Simulador de Circuitos</title>
+<meta name="description" content="Simulaciones interactivas de circuitos en serie y en paralelo con calculadora de resistencia total y gráfica V-I.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header>
+    <h1>Simulador de Circuitos</h1>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="cd.html">Corriente Directa</a>
+        <a href="ca.html">Corriente Alterna</a>
+        <a href="dospuertos.html">Dos Puertos</a>
+        <a href="recursos.html">Recursos</a>
+        <!-- MENÚ DESPLEGABLE -->
+        <div class="dropdown">
+            <button class="dropbtn">Prácticas</button>
+            <div class="dropdown-content">
+                <a href="practicas.html">Simulaciones</a>
+                <a href="bnc-caiman.html">Cable BNC-Caimán</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container" id="contenido">
+
+<!-- ================= SERIE ================= -->
+<section class="intro">
+    <h2>Circuito en Serie</h2>
+
+    <div id="resistenciasSerie"></div>
+    <button onclick="agregarResistencia('serie')">+ Resistencia</button>
+
+    <label for="voltajeSerie">Voltaje (V)</label>
+    <input id="voltajeSerie" type="number" placeholder="Ej. 12">
+    <button onclick="calcularSerie()">Calcular</button>
+
+    <div class="resultado-box">
+        <p id="resultadoSerie"></p>
+    </div>
+</section>
+
+<!-- ================= PARALELO ================= -->
+<section class="intro">
+    <h2>Circuito en Paralelo</h2>
+
+    <div id="resistenciasParalelo"></div>
+    <button onclick="agregarResistencia('paralelo')">+ Resistencia</button>
+
+    <label for="voltajeParalelo">Voltaje (V)</label>
+    <input id="voltajeParalelo" type="number" placeholder="Ej. 12">
+    <button onclick="calcularParalelo()">Calcular</button>
+
+    <div class="resultado-box">
+        <p id="resultadoParalelo"></p>
+    </div>
+</section>
+
+<!-- ================= GRÁFICA ================= -->
+<section class="intro">
+    <h2>Gráfica V–I</h2>
+    <div class="grafica-container">
+        <canvas id="grafica"></canvas>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p class="footer-marca">Simulador de Circuitos</p>
+    <p>Herramienta educativa de electrónica y circuitos eléctricos.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/script_p.js"></script>
+
+</body>
+</html>
