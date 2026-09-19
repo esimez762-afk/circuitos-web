@@ -1,0 +1,97 @@
+/* =========================================
+   RECURSOS / ARCHIVOS DESCARGABLES
+   (usado únicamente en recursos.html)
+========================================= */
+.archivos-buscador{
+    margin-bottom:20px;
+}
+
+.archivos-lista{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.archivo-item{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    background:var(--gris-100);
+    border:1px solid var(--gris-200);
+    border-radius:var(--radio-md);
+    padding:16px 18px;
+    transition:transform var(--transicion), box-shadow var(--transicion);
+}
+
+.archivo-item:hover{
+    transform:translateY(-2px);
+    box-shadow:var(--sombra-sm);
+}
+
+.archivo-icono{
+    font-size:1.8rem;
+    line-height:1;
+    flex-shrink:0;
+}
+
+.archivo-info{
+    flex:1;
+    min-width:0;
+}
+
+.archivo-info h3{
+    font-size:1rem;
+    color:var(--gris-900);
+    margin:0 0 4px;
+}
+
+.archivo-info p{
+    font-size:0.9rem;
+    color:var(--gris-600);
+    margin:0 0 6px;
+    text-align:left;
+}
+
+.archivo-categoria{
+    display:inline-block;
+    background:var(--azul-claro2);
+    color:var(--azul-oscuro);
+    font-size:0.75rem;
+    font-weight:600;
+    padding:3px 10px;
+    border-radius:999px;
+}
+
+.archivo-descarga{
+    background:linear-gradient(135deg,var(--azul),var(--azul-oscuro));
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.9rem;
+    padding:10px 18px;
+    border-radius:10px;
+    white-space:nowrap;
+    transition:transform var(--transicion), box-shadow var(--transicion);
+    flex-shrink:0;
+}
+
+.archivo-descarga:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 15px rgba(37,99,235,0.35);
+}
+
+.archivos-vacio{
+    text-align:center;
+    color:var(--gris-600);
+    padding:20px;
+}
+
+@media(max-width:768px){
+    .archivo-item{
+        flex-wrap:wrap;
+    }
+    .archivo-descarga{
+        width:100%;
+        text-align:center;
+    }
+}

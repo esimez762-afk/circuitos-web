@@ -1,0 +1,84 @@
+/* =========================================
+   ETIQUETAS DE FORMULARIO
+========================================= */
+label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    color:var(--gris-600);
+    margin-bottom:4px;
+}
+
+/* =========================================
+   INPUTS
+========================================= */
+input, select{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    margin-bottom:15px;
+    border-radius:10px;
+    border:1px solid var(--gris-300);
+    font-size:15px;
+    font-family:inherit;
+    transition:border-color var(--transicion), box-shadow var(--transicion);
+    background:#fff;
+    color:var(--texto);
+}
+
+input:focus, select:focus{
+    outline:none;
+    border-color:var(--azul);
+    box-shadow:0 0 8px rgba(37,99,235,0.3);
+}
+
+input[type="range"]{
+    padding:0;
+    cursor:pointer;
+    accent-color:var(--azul);
+}
+
+/* =========================================
+   FORMULARIOS
+========================================= */
+.form-ohm{
+    display:flex;
+    gap:10px;
+    margin-bottom:15px;
+    flex-wrap:wrap;
+    align-items:flex-start;
+}
+
+.form-ohm > div{
+    flex:1;
+    min-width:150px;
+}
+
+.form-ohm input{
+    margin-bottom:0;
+}
+
+/* =========================================
+   BOTONES
+========================================= */
+button{
+    background:linear-gradient(135deg,var(--azul),var(--azul-oscuro));
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:transform var(--transicion), box-shadow var(--transicion);
+    font-size:15px;
+    font-weight:600;
+    font-family:inherit;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 15px rgba(37,99,235,0.35);
+}
+
+button:active{
+    transform:translateY(0);
+}

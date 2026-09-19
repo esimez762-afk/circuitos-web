@@ -1,0 +1,131 @@
+/* =========================================
+   DIAGRAMAS SVG (index.html)
+========================================= */
+.diagramas{
+    margin-top:40px;
+}
+
+.diagramas h3{
+    margin:25px 0 10px;
+}
+
+.grafica{
+    width:100%;
+    max-width:600px;
+    display:block;
+    margin:10px auto 30px;
+    background:#fafafa;
+    border-radius:10px;
+    padding:10px;
+    border:1px solid var(--gris-200);
+}
+
+/* =========================================
+   GRAFICAS (Chart.js)
+========================================= */
+.grafica-container{
+    width:100%;
+    max-width:700px;
+    height:350px;
+    margin:20px auto;
+}
+
+#grafica,
+#graficaCA,
+#graficaVI{
+    width:100% !important;
+    height:100% !important;
+}
+
+/* =========================================
+   CANVAS
+========================================= */
+canvas{
+    max-width:100%;
+    display:block;
+    margin:20px auto;
+    background:white;
+    border-radius:12px;
+    box-shadow:var(--sombra-sm);
+}
+
+#graficaVI{
+    max-width:800px;
+}
+
+/* =========================================
+   OSCILOSCOPIO
+========================================= */
+#osciloscopio,
+#osciloscopioCA{
+    max-width:800px;
+    width:100%;
+    height:auto;
+    margin:20px auto;
+    display:block;
+    background:black;
+    border:4px solid var(--gris-800);
+    border-radius:12px;
+}
+
+/* =========================================
+   CONTROLES (sliders del simulador)
+========================================= */
+.controles{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin-top:15px;
+    margin-bottom:10px;
+}
+
+.controles label{
+    margin-bottom:0;
+    margin-top:8px;
+}
+
+/* =========================================
+   VIDEO RESPONSIVO (bnc-caiman.html)
+========================================= */
+.video-container{
+    width:100%;
+    max-width:350px;
+    aspect-ratio:9 / 16;
+    margin:30px auto;
+    box-shadow:0 6px 20px rgba(0,0,0,0.25);
+    border-radius:12px;
+    overflow:hidden;
+    background:#000;
+}
+
+.video-container video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border:none;
+}
+
+/* =========================================
+   ANIMACIONES DE ENTRADA (dospuertos.html)
+========================================= */
+.animado{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all 0.6s ease;
+}
+
+.animado.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce){
+    html{
+        scroll-behavior:auto;
+    }
+    .animado{
+        opacity:1;
+        transform:none;
+        transition:none;
+    }
+}

@@ -1,0 +1,107 @@
+/* =========================================
+   FUENTE
+========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
+
+/* =========================================
+   VARIABLES
+   (colores, radios, sombras — cámbialos aquí
+   y se actualiza todo el sitio)
+========================================= */
+:root{
+    --azul:#2563eb;
+    --azul-oscuro:#1d4ed8;
+    --azul-claro:#eff6ff;
+    --azul-claro2:#dbeafe;
+    --cian:#38bdf8;
+    --gris-950:#0f172a;
+    --gris-900:#111827;
+    --gris-800:#1f2937;
+    --gris-600:#4b5563;
+    --gris-300:#cbd5e1;
+    --gris-200:#e5e7eb;
+    --gris-100:#f1f5f9;
+    --fondo:#f4f6f9;
+    --texto:#333;
+    --blanco:#fff;
+    --radio-sm:8px;
+    --radio-md:12px;
+    --radio-lg:18px;
+    --sombra-sm:0 4px 12px rgba(15,23,42,0.08);
+    --sombra-md:0 5px 20px rgba(15,23,42,0.08);
+    --sombra-lg:0 10px 25px rgba(15,23,42,0.18);
+    --transicion:0.25s ease;
+}
+
+/* =========================================
+   RESET
+========================================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =========================================
+   ACCESIBILIDAD: SALTAR AL CONTENIDO
+========================================= */
+.skip-link{
+    position:absolute;
+    left:-999px;
+    top:auto;
+    background:var(--azul);
+    color:#fff;
+    padding:10px 16px;
+    border-radius:0 0 8px 0;
+    z-index:2000;
+}
+
+.skip-link:focus{
+    left:0;
+    top:0;
+}
+
+/* =========================================
+   FOCO VISIBLE (accesibilidad de teclado)
+========================================= */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible{
+    outline:3px solid var(--cian);
+    outline-offset:2px;
+}
+
+/* =========================================
+   BODY
+========================================= */
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter','Segoe UI',Arial,sans-serif;
+    background:var(--fondo);
+    color:var(--texto);
+    line-height:1.7;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+main{
+    flex:1;
+}
+
+/* =========================================
+   TEXTO RESALTADO GLOBAL
+========================================= */
+strong{
+    color:var(--azul-oscuro);
+}
+
+hr{
+    margin:30px 0;
+    border:none;
+    border-top:2px solid var(--gris-200);
+}
