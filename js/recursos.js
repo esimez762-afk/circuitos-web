@@ -37,6 +37,6 @@ const ARCHIVOS = [
         nombre: "USO DEL GENERADOR OSCILOSCOPIO",
         descripcion: "Guía de uso del osciloscopio para experimentos en circuitos eléctricos",
         archivo: "archivos/USO DEL GENERADOR OSCILOSCOPIO.pdf",
-        categoria: "Guías"
+        categoria: "Guias"
     }
 ];
