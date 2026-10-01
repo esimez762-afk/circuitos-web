@@ -91,7 +91,7 @@ nav a.activo{
 
     min-width:220px;
 
-    background:#fff;
+    background:var(--superficie);
     border-radius:12px;
 
     box-shadow:var(--sombra-lg);
@@ -112,7 +112,7 @@ nav a.activo{
 .dropdown-content a{
     display:block;
     padding:12px 16px;
-    color:#111827;
+    color:var(--texto-fuerte);
     text-decoration:none;
     transition:background var(--transicion);
     font-size:14px;
