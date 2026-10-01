@@ -23,7 +23,9 @@
     --gris-100:#f1f5f9;
     --fondo:#f4f6f9;
     --texto:#333;
-    --blanco:#fff;
+    --superficie:#ffffff;
+    --texto-fuerte:#111827;
+    --texto-medio:#1f2937;
     --radio-sm:8px;
     --radio-md:12px;
     --radio-lg:18px;
@@ -87,6 +89,7 @@ body{
     min-height:100vh;
     display:flex;
     flex-direction:column;
+    transition:background var(--transicion), color var(--transicion);
 }
 
 main{
