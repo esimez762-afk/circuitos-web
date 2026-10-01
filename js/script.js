@@ -1,80 +1,111 @@
-// ===========================
-// MENÚ DESPLEGABLE
-// ===========================
-const menuBtn = document.querySelector(".menu-btn");
-const menu = document.querySelector(".menu");
+let chart;
 
-if (menuBtn) {
-    menuBtn.addEventListener("click", () => {
-        menu.classList.toggle("active");
-    });
+
+// AGREGAR RESISTENCIAS
+function agregarResistencia(tipo) {
+
+    let container = document.getElementById(
+        tipo === "serie" ? "resistenciasSerie" : "resistenciasParalelo"
+    );
+
+    let input = document.createElement("input");
+    input.placeholder = "Resistencia (Ω)";
+    input.classList.add("resistencia");
+
+    container.appendChild(input);
 }
 
-// ===========================
-// SCROLL SUAVE
-// ===========================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href"))
-            .scrollIntoView({
-                behavior: "smooth"
-            });
+// OBTENER RESISTENCIAS
+function obtenerValores(containerId) {
+
+    let inputs = document.querySelectorAll(`#${containerId} .resistencia`);
+    let valores = [];
+
+    inputs.forEach(input => {
+        let val = parseFloat(input.value);
+        if (!isNaN(val)) valores.push(val);
     });
-});
 
-// ===========================
-// MENSAJE DINÁMICO
-// ===========================
-const mensaje = document.getElementById("mensaje");
-
-if (mensaje) {
-    const textos = [
-        "Bienvenido al simulador de circuitos ⚡",
-        "Explora Corriente Directa (CD)",
-        "Analiza Corriente Alterna (CA)",
-        "Realiza prácticas interactivas 🔧"
-    ];
-
-    let i = 0;
-
-    setInterval(() => {
-        mensaje.innerText = textos[i];
-        i = (i + 1) % textos.length;
-    }, 3000);
+    return valores;
 }
 
-// ===========================
-// ANIMACIÓN AL HACER SCROLL
-// ===========================
-const elementos = document.querySelectorAll(".animado");
+// SERIE
+function calcularSerie() {
 
-function mostrarElementos() {
-    let altura = window.innerHeight;
+    let resistencias = obtenerValores("resistenciasSerie");
+    let V = parseFloat(document.getElementById("voltajeSerie").value);
 
-    elementos.forEach(el => {
-        let distancia = el.getBoundingClientRect().top;
+    if (resistencias.length === 0 || isNaN(V)) {
+        document.getElementById("resultadoSerie").innerText = "⚠️ Datos incompletos";
+        return;
+    }
 
-        if (distancia < altura - 100) {
-            el.classList.add("visible");
+    let Rt = resistencias.reduce((a, b) => a + b, 0);
+    let I = V / Rt;
+
+    document.getElementById("resultadoSerie").innerHTML =
+        `Rt: ${Rt.toFixed(2)} Ω<br>
+         I total: ${I.toFixed(2)} A`;
+
+    generarGrafica(Rt);
+}
+
+// PARALELO
+function calcularParalelo() {
+
+    let resistencias = obtenerValores("resistenciasParalelo");
+    let V = parseFloat(document.getElementById("voltajeParalelo").value);
+
+    if (resistencias.length === 0 || isNaN(V)) {
+        document.getElementById("resultadoParalelo").innerText = "⚠️ Datos incompletos";
+        return;
+    }
+
+    let invRt = resistencias.reduce((a, b) => a + (1 / b), 0);
+    let Rt = 1 / invRt;
+    let I = V / Rt;
+
+    // Corrientes por rama
+    let corrientes = resistencias.map(r => (V / r).toFixed(2));
+
+    document.getElementById("resultadoParalelo").innerHTML =
+        `Rt: ${Rt.toFixed(2)} Ω<br>
+         I total: ${I.toFixed(2)} A<br>
+         Corrientes por rama: ${corrientes.join(" A, ")} A`;
+
+    generarGrafica(Rt);
+}
+
+// GRÁFICA V-I
+function generarGrafica(Rt) {
+
+    let corriente = [];
+    let voltaje = [];
+
+    for (let i = 0; i <= 10; i++) {
+        corriente.push(i);
+        voltaje.push(i * Rt);
+    }
+
+    if (chart) chart.destroy();
+
+    chart = new Chart(document.getElementById("grafica"), {
+        type: "line",
+        data: {
+            labels: corriente,
+            datasets: [{
+                label: "V = I·R",
+                data: voltaje,
+                tension: 0.2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
         }
     });
 }
 
-window.addEventListener("scroll", mostrarElementos);
-mostrarElementos(); // por si ya están visibles al cargar la página
-
-// ===========================
-// EFECTO HOVER TARJETAS
-// ===========================
-const cards = document.querySelectorAll(".card");
-
-cards.forEach(card => {
-    card.addEventListener("mouseenter", () => {
-        card.style.transform = "scale(1.05)";
-    });
-
-    card.addEventListener("mouseleave", () => {
-        card.style.transform = "scale(1)";
-    });
-});
+// INICIALIZAR
+agregarResistencia("serie");
+agregarResistencia("paralelo");
