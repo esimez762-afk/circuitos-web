@@ -1,0 +1,42 @@
+/* =========================================
+   MODO OSCURO
+   Se activa agregando data-tema="oscuro" a <html>
+   (lo hace automáticamente js/nav.js al pulsar
+   el botón 🌙 del encabezado, y recuerda la
+   preferencia en localStorage).
+
+   El encabezado, el pie de página y las cajas de
+   fórmula ya son oscuros en ambos temas por diseño,
+   así que no se tocan aquí.
+========================================= */
+html[data-tema="oscuro"]{
+    --fondo:#0b1220;
+    --texto:#e2e8f0;
+    --superficie:#172033;
+
+    --texto-fuerte:#f8fafc;
+    --texto-medio:#e2e8f0;
+
+    --gris-600:#b8c2d1;
+    --gris-300:#3c4a62;
+    --gris-200:#2a3750;
+    --gris-100:#1e293b;
+
+    --azul-claro:#13233f;
+    --azul-claro2:#1d3a63;
+
+    color-scheme:dark;
+}
+
+html[data-tema="oscuro"] .intro:hover{
+    box-shadow:0 10px 25px rgba(0,0,0,0.45);
+}
+
+html[data-tema="oscuro"] .grafica{
+    background:#0f172a;
+    filter:brightness(0.92) contrast(1.05);
+}
+
+html[data-tema="oscuro"] table tr:hover td{
+    background:var(--gris-100);
+}
