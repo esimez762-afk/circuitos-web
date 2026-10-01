@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario | Simulador de Circuitos</title>
+    <meta name="description" content="Glosario de términos de electricidad y circuitos: voltaje, corriente, resistencia, impedancia, reactancia, potencia y más.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header>
+    <h1>Glosario de Circuitos</h1>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="cd.html">Corriente Directa</a>
+        <a href="ca.html">Corriente Alterna</a>
+        <a href="dospuertos.html">Dos Puertos</a>
+        <a href="recursos.html">Recursos</a>
+        <a href="glosario.html">Glosario</a>
+        <!-- MENÚ DESPLEGABLE -->
+        <div class="dropdown">
+            <button class="dropbtn">Prácticas</button>
+            <div class="dropdown-content">
+                <a href="practicas.html">Simulaciones</a>
+                <a href="thevenin-norton.html">Thévenin / Norton</a>
+                <a href="bnc-caiman.html">Cable BNC-Caimán</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container" id="contenido">
+
+    <section class="intro animado">
+        <h2>Términos</h2>
+        <p>
+            Consulta aquí el significado de los conceptos usados en las páginas de
+            Corriente Directa, Corriente Alterna y Dos Puertos.
+        </p>
+
+        <label for="buscarTermino">Buscar término</label>
+        <input type="text" id="buscarTermino" placeholder="Ej. impedancia, RMS, factor de potencia...">
+
+        <div id="listaTerminos" aria-live="polite"></div>
+    </section>
+
+</main>
+
+<footer>
+    <p class="footer-marca">Simulador de Circuitos</p>
+    <p>Herramienta educativa de electrónica y circuitos eléctricos.</p>
+</footer>
+
+<script src="js/nav.js"></script>
+<script src="js/glosario.js"></script>
+
+</body>
+</html>
