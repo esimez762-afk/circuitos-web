@@ -11,7 +11,9 @@
    formularios.css  -> labels, inputs, selects, botones
    simulador.css     -> diagramas SVG, gráficas, canvas, osciloscopio, video
    recursos.css     -> tarjetas de archivos descargables (recursos.html)
+   utilidades.css   -> migas de pan y botón "volver arriba"
    responsive.css   -> ajustes para pantallas pequeñas (se importa al final)
+   dark.css         -> variables del modo oscuro (data-tema="oscuro")
 
    Todas las páginas siguen enlazando solo este archivo
    (css/styles.css); no hace falta tocar el HTML.
@@ -24,4 +26,6 @@
 @import url('formularios.css');
 @import url('simulador.css');
 @import url('recursos.css');
+@import url('utilidades.css');
 @import url('responsive.css');
+@import url('dark.css');
