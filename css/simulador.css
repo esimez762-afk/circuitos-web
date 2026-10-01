@@ -32,7 +32,8 @@
 
 #grafica,
 #graficaCA,
-#graficaVI{
+#graficaVI,
+#graficaPotencia{
     width:100% !important;
     height:100% !important;
 }
@@ -44,7 +45,7 @@ canvas{
     max-width:100%;
     display:block;
     margin:20px auto;
-    background:white;
+    background:var(--superficie);
     border-radius:12px;
     box-shadow:var(--sombra-sm);
 }
