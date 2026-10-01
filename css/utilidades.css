@@ -1,0 +1,105 @@
+/* =========================================
+   INTERRUPTOR DE TEMA (botón 🌙/☀️ en el header)
+========================================= */
+.tema-toggle{
+    position:absolute;
+    top:16px;
+    right:16px;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2);
+    color:#fff;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    font-size:1.1rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:background var(--transicion), transform var(--transicion);
+}
+
+.tema-toggle:hover{
+    background:rgba(255,255,255,0.22);
+    transform:translateY(-2px) rotate(15deg);
+}
+
+/* =========================================
+   MIGAS DE PAN (breadcrumbs)
+========================================= */
+.migas{
+    max-width:1100px;
+    margin:18px auto 0;
+    padding:0 20px;
+    font-size:0.85rem;
+    color:var(--gris-600);
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    align-items:center;
+}
+
+.migas a{
+    color:var(--azul);
+    text-decoration:none;
+}
+
+.migas a:hover{
+    text-decoration:underline;
+}
+
+.migas .separador{
+    opacity:0.5;
+}
+
+.migas .actual{
+    color:var(--gris-600);
+    font-weight:600;
+}
+
+/* =========================================
+   BOTÓN "VOLVER ARRIBA"
+========================================= */
+.volver-arriba{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    width:46px;
+    height:46px;
+    padding:0;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--azul),var(--azul-oscuro));
+    color:#fff;
+    border:none;
+    font-size:1.2rem;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:var(--sombra-lg);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:opacity var(--transicion), transform var(--transicion), visibility var(--transicion);
+
+    z-index:900;
+}
+
+.volver-arriba.visible{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.volver-arriba:hover{
+    transform:translateY(-3px);
+}
+
+@media(max-width:768px){
+    .tema-toggle{
+        position:static;
+        margin:10px auto 0;
+    }
+}
